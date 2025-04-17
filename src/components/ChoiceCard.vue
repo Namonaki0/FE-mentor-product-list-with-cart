@@ -1,3 +1,18 @@
+<script setup>
+import { useCartStore } from '@/store/cart.js'
+const props = defineProps({ choice: Object })
+const cart = useCartStore()
+
+const addToCart = () => {
+  cart.addItem(props.choice)
+  console.log('Item added to cart:', props.choice)
+}
+const getImage = (path) => {
+  if (!path) return ''
+  return new URL(`../assets/images/${path}`, import.meta.url).href
+}
+
+</script>
 <template>
   <div class="border rounded-2xl p-4 shadow hover:shadow-lg transition bg-white choice-wrapper">
     <div class="image-wrapper border-b mb-3">
@@ -32,32 +47,20 @@
   </div>
 </template>
 
-<script setup>
-import { useCartStore } from '@/store/cart.js'
-const props = defineProps({ choice: Object })
-const cart = useCartStore()
-
-const addToCart = () => {
-  cart.addItem(props.choice)
-}
-const getImage = (path) => {
-  if (!path) return ''
-  return new URL(`../assets/images/${path}`, import.meta.url).href
-}
-
-</script>
-
 <style scoped>
   .choice-wrapper {
     font-family: var(--font-default);
   }
   .image-wrapper {
-    border: 2px solid var(--red);
     border-radius: 5px;
     position: relative;
   }
+  .image-wrapper:hover {
+    border: 2px solid var(--red);
+  }
   img {
-    /* width: 100%; */
+    width: 100%;
+    border-radius: 5px;
     display: block;
   }
   button {
