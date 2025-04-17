@@ -5,7 +5,6 @@ const cart = useCartStore()
 
 const addToCart = () => {
   cart.addItem(props.choice)
-  console.log('Item added to cart:', props.choice)
 }
 const getImage = (path) => {
   if (!path) return ''

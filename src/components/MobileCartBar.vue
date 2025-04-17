@@ -5,7 +5,6 @@ const cart = useCartStore()
 
 const removeItem = (name) => {
   cart.removeItem(name)
-  console.log('Item removed from cart:', name)
 }
 </script>
 
