@@ -1,5 +1,6 @@
 <script setup>
 import { useCartStore } from '@/store/cart.js'
+import Button from './reusable/button.vue'
 const props = defineProps({ choice: Object })
 const cart = useCartStore()
 
@@ -34,25 +35,33 @@ const getImage = (path) => {
           class="rounded-xl mb-2 w-full object-cover"
         />
       </picture>
-      <button @click="addToCart" class="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition">
-        Add to Cart
-      </button>
+      <Button 
+        icon="icon-add-to-cart"
+        text="Add to Cart"
+        class="add-to-cart"
+        @click="addToCart"
+      />
     </div>
-    <p class="bg-red-500 text-white text-xs px-2 py-1 rounded-full mb-2">
+    <p class="bg-red-500 text-white text-xs px-2 rounded-full category">
       {{ choice.category }}
     </p>
-    <h3 class="font-semibold text-lg">{{ choice.name }}</h3>
-    <p class="text-sm text-gray-600 mb-3">${{ choice.price.toFixed(2) }}</p>
+    <h3 class="font-semibold text-lg name">{{ choice.name }}</h3>
+    <p class="text-sm text-gray-600 price">${{ choice.price.toFixed(2) }}</p>
   </div>
 </template>
 
 <style scoped>
   .choice-wrapper {
     font-family: var(--font-default);
+    margin-bottom: 22px;
   }
   .image-wrapper {
-    border-radius: 5px;
+    border-radius: 6px;
     position: relative;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
   .image-wrapper:hover {
     border: 2px solid var(--red);
@@ -62,9 +71,31 @@ const getImage = (path) => {
     border-radius: 5px;
     display: block;
   }
-  button {
+  .add-to-cart {
+    font-family: inherit;
+    display: flex;
     position: absolute;
-    bottom: -10px;
-    left: 25%;
+    align-items: center;
+    background: white;
+    color: var(--rose-900);
+    border: 1px solid hsla(14, 65%, 9%, 0.306);
+    padding: 8px 24px;
+    border-radius: 18px;
+    bottom: -18px;
+  }
+  .category,
+  .name,
+  .price {
+    margin: 0;
+  }
+
+  .category {
+    color: var(--rose-400);
+  }
+  .name {
+    color: var(--rose-900);
+  }
+  .price {
+    color: var(--red);
   }
 </style>

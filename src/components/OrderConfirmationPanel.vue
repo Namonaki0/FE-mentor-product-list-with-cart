@@ -1,5 +1,6 @@
 <script setup>
   import { useCartStore } from '@/store/cart.js'
+  import Button from './reusable/button.vue'
   const props = defineProps({ show: Boolean })
   const emit = defineEmits(['close'])
   
@@ -23,8 +24,11 @@
           @click.self="close"
         >
         <transition name="slide-up">
-          <div class="bg-white rounded-xl w-full max-w-md p-6 shadow-xl text-center relative extra">
-            <button @click="close" class="absolute top-4 right-4 text-gray-400 text-xl">×</button>
+          <div class="bg-white rounded-xl w-full max-w-md p-6 shadow-xl text-center relative panel">
+          <Button 
+            text="X"
+            @click="close()"
+          />
             <div class="text-green-600 text-4xl mb-4">✔️</div>
             <h2 class="text-2xl font-bold mb-1">Order Confirmed</h2>
             <p class="text-sm text-gray-600 mb-6">We hope you enjoy your food!</p>
@@ -41,10 +45,10 @@
                 <span>${{ cart.totalPrice.toFixed(2) }}</span>
               </div>
             </div>
-  
-            <button @click="startNewOrder" class="bg-red-600 text-white w-full py-3 rounded-full hover:bg-red-700">
-              Start New Order
-            </button>
+            <Button 
+              text="Start New Order"
+              @click="startNewOrder"
+            />
           </div>
         </transition>
         </div>
@@ -52,13 +56,13 @@
 </template>  
 
 <style scoped>
-.extra {
-    position: absolute;
-    background-color: white;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transform: translateY(0%);
+.panel {
+  position: absolute;
+  background-color: white;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(0%);
 }
 
 .backdrop {
