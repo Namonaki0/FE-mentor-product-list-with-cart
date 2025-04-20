@@ -1,7 +1,9 @@
 <script setup>
   import { useCartStore } from '@/store/cart.js'
   import Button from './reusable/button.vue'
+
   const props = defineProps({ show: Boolean })
+
   const emit = defineEmits(['close'])
   
   const cart = useCartStore()
@@ -26,7 +28,7 @@
         <transition name="slide-up">
           <div class="bg-white rounded-xl w-full max-w-md p-6 shadow-xl text-center relative panel">
           <Button 
-            text="X"
+            icon="icon-remove-item"
             @click="close()"
           />
             <div class="text-green-600 text-4xl mb-4">✔️</div>

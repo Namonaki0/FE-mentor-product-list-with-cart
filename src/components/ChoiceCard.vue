@@ -1,7 +1,9 @@
 <script setup>
 import { useCartStore } from '@/store/cart.js'
 import Button from './reusable/button.vue'
+
 const props = defineProps({ choice: Object })
+
 const cart = useCartStore()
 
 const addToCart = () => {
