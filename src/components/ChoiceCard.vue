@@ -44,60 +44,66 @@ const getImage = (path) => {
         @click="addToCart"
       />
     </div>
-    <p class="bg-red-500 text-white text-xs px-2 rounded-full category">
-      {{ choice.category }}
-    </p>
-    <h3 class="font-semibold text-lg name">{{ choice.name }}</h3>
-    <p class="text-sm text-gray-600 price">${{ choice.price.toFixed(2) }}</p>
+    <div class="product-info-wrapper">
+      <p class="bg-red-500 text-white text-xs px-2 rounded-full category">
+        {{ choice.category }}
+      </p>
+      <h3 class="font-semibold text-lg name">{{ choice.name }}</h3>
+      <p class="text-sm text-gray-600 price">${{ choice.price.toFixed(2) }}</p>
+    </div>
   </div>
 </template>
 
 <style scoped>
-  .choice-wrapper {
-    font-family: var(--font-default);
-    margin-bottom: 22px;
-  }
-  .image-wrapper {
-    border-radius: 6px;
-    position: relative;
-    border: 2px solid white;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
-  .image-wrapper:hover {
-    border: 2px solid var(--red);
-  }
-  img {
-    width: 100%;
-    border-radius: 5px;
-    display: block;
-  }
-  .add-to-cart {
-    font-family: inherit;
-    display: flex;
-    position: absolute;
-    align-items: center;
-    background: white;
-    color: var(--rose-900);
-    border: 1px solid hsla(14, 65%, 9%, 0.306);
-    padding: 8px 24px;
-    border-radius: 18px;
-    bottom: -18px;
-  }
-  .category,
-  .name,
-  .price {
-    margin: 0;
-  }
-
-  .category {
-    color: var(--rose-400);
-  }
-  .name {
-    color: var(--rose-900);
-  }
-  .price {
-    color: var(--red);
-  }
+.choice-wrapper {
+  font-family: var(--font-default);
+  margin-bottom: 22px;
+}
+.image-wrapper {
+  border-radius: 6px;
+  position: relative;
+  border: 2px solid var(--rose-50);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.image-wrapper:hover {
+  border: 2px solid var(--rose-900);
+}
+img {
+  width: 100%;
+  border-radius: 5px;
+  display: block;
+}
+.add-to-cart {
+  font-family: inherit;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  background: white;
+  color: var(--rose-900);
+  border: 1px solid hsla(14, 65%, 9%, 0.306);
+  padding: 8px 24px;
+  border-radius: 18px;
+  bottom: -18px;
+}
+.category,
+.name,
+.price {
+  margin: 0;
+}
+.product-info-wrapper {
+  margin-top: 24px;
+}
+.category {
+  color: var(--rose-400);
+  margin-bottom: 5px;
+}
+.name {
+  color: var(--rose-900);
+  margin-bottom: 5px;
+}
+.price {
+  color: var(--red);
+}
 </style>

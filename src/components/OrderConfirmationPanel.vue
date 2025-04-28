@@ -19,42 +19,42 @@
 </script>
   
 <template>
-    <teleport to="body">
-        <div
-          v-if="show"
-          class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center px-4 backdrop"
-          @click.self="close"
-        >
-        <transition name="slide-up">
-          <div class="bg-white rounded-xl w-full max-w-md p-6 shadow-xl text-center relative panel">
-          <Button 
-            icon="icon-remove-item"
-            @click="close()"
-          />
-            <div class="text-green-600 text-4xl mb-4">✔️</div>
-            <h2 class="text-2xl font-bold mb-1">Order Confirmed</h2>
-            <p class="text-sm text-gray-600 mb-6">We hope you enjoy your food!</p>
-  
-            <div class="bg-[#fdfbf0] rounded-lg p-4 mb-6 text-left">
-              <ul class="divide-y divide-gray-200 text-sm mb-4">
-                <li v-for="item in cart.items" :key="item.name" class="py-3 flex justify-between">
-                  <span>{{ item.name }}</span>
-                  <span class="font-semibold">${{ (item.price * item.quantity).toFixed(2) }}</span>
-                </li>
-              </ul>
-              <div class="flex justify-between font-semibold text-base">
-                <span>Order Total</span>
-                <span>${{ cart.totalPrice.toFixed(2) }}</span>
-              </div>
+  <teleport to="body">
+      <div
+        v-if="show"
+        class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center px-4 backdrop"
+        @click.self="close"
+      >
+      <transition name="slide-up">
+        <div class="bg-white rounded-xl w-full max-w-md p-6 shadow-xl text-center relative panel">
+        <Button 
+          icon="icon-remove-item"
+          @click="close()"
+        />
+          <div class="text-green-600 text-4xl mb-4">✔️</div>
+          <h2 class="text-2xl font-bold mb-1">Order Confirmed</h2>
+          <p class="text-sm text-gray-600 mb-6">We hope you enjoy your food!</p>
+
+          <div class="bg-[#fdfbf0] rounded-lg p-4 mb-6 text-left">
+            <ul class="divide-y divide-gray-200 text-sm mb-4">
+              <li v-for="item in cart.items" :key="item.name" class="py-3 flex justify-between">
+                <span>{{ item.name }}</span>
+                <span class="font-semibold">${{ (item.price * item.quantity).toFixed(2) }}</span>
+              </li>
+            </ul>
+            <div class="flex justify-between font-semibold text-base">
+              <span>Order Total</span>
+              <span>${{ cart.totalPrice.toFixed(2) }}</span>
             </div>
-            <Button 
-              text="Start New Order"
-              @click="startNewOrder"
-            />
           </div>
-        </transition>
+          <Button 
+            text="Start New Order"
+            @click="startNewOrder"
+          />
         </div>
-    </teleport>
+      </transition>
+      </div>
+  </teleport>
 </template>  
 
 <style scoped>
