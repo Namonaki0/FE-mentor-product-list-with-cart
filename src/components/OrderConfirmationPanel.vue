@@ -1,6 +1,6 @@
 <script setup>
   import { useCartStore } from '@/store/cart.js'
-  import Button from './reusable/button.vue'
+  import Button from './reusable/Button.vue'
 
   const props = defineProps({ show: Boolean })
 

@@ -1,20 +1,35 @@
 <script setup>
 import { useCartStore } from '@/store/cart.js'
-import Button from './reusable/button.vue'
+import Button from './reusable/Button.vue'
+import QuantityButton from './reusable/QuantityButton.vue'
 
 const props = defineProps({ choice: Object })
-
 const cart = useCartStore()
 
 const addToCart = () => {
   cart.addItem(props.choice)
 }
+
 const getImage = (path) => {
   if (!path) return ''
   return new URL(`../assets/images/${path}`, import.meta.url).href
 }
 
+
+const increaseQuantity = () => {
+  cart.addItem(props.choice)
+}
+
+const decreaseQuantity = () => {
+  cart.removeOne(props.choice.name)
+}
+
+const getQuantity = () => {
+  const item = cart.items.find(i => i.name === props.choice.name)
+  return item?.quantity || 0
+}
 </script>
+
 <template>
   <div class="border rounded-2xl p-4 shadow hover:shadow-lg transition bg-white choice-wrapper">
     <div class="image-wrapper border-b mb-3">
@@ -37,7 +52,14 @@ const getImage = (path) => {
           class="rounded-xl mb-2 w-full object-cover"
         />
       </picture>
-      <Button 
+      <QuantityButton
+        v-if="getQuantity() > 0"
+        :quantity="getQuantity()"
+        :onIncrease="increaseQuantity"
+        :onDecrease="decreaseQuantity"
+      />
+      <Button
+        v-else
         icon="icon-add-to-cart"
         text="Add to Cart"
         class="add-to-cart"
@@ -68,7 +90,7 @@ const getImage = (path) => {
   flex-direction: column;
 }
 .image-wrapper:hover {
-  border: 2px solid var(--rose-900);
+  border: 2px solid var(--red);
 }
 img {
   width: 100%;
@@ -80,12 +102,15 @@ img {
   display: flex;
   position: absolute;
   align-items: center;
+  justify-content: center;
   background: white;
   color: var(--rose-900);
   border: 1px solid hsla(14, 65%, 9%, 0.306);
-  padding: 8px 24px;
+  padding: 8px 10px;
   border-radius: 18px;
-  bottom: -18px;
+  bottom: -22px;
+  width: 42%;
+  height: 40px;
 }
 .category,
 .name,
@@ -105,5 +130,32 @@ img {
 }
 .price {
   color: var(--red);
+}
+.quantity-control {
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  background-color: var(--red);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 18px;
+  position: absolute;
+  bottom: -18px;
+}
+.qty {
+  font-size: 14px;
+  margin: 0 12px;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.qty-btn {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 8px;
+  cursor: pointer;
+  border: 1px solid white;
+  border-radius: 50%;
 }
 </style>

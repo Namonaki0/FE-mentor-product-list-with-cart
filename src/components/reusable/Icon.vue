@@ -1,7 +1,8 @@
 <script setup>
 const props = defineProps({
   icon: { type: String, default: null },
-  position: { type: String, default: 'left' }
+  position: { type: String, default: 'left' },
+  noMargin: { type: Boolean, default: false }
 })
 
 const getIconPath = (icon) => {
@@ -12,7 +13,15 @@ const getIconPath = (icon) => {
 
 <template>
     <template v-if="icon">
-      <img :src="getIconPath(icon)" :alt="icon" :class="['w-4 h-4', `icon-${position}`]" />
+      <img
+        :src="getIconPath(icon)"
+        :alt="icon"
+        :class="[
+          'w-4 h-4',
+          !noMargin && position === 'left' ? 'icon-left' : '',
+          !noMargin && position === 'right' ? 'icon-right' : ''
+        ]"
+      />
     </template>
 </template>
 

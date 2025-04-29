@@ -47,6 +47,10 @@ const emit = defineEmits(['click'])
 </template>
 
 <style scoped>
+button:hover,
+button:focus {
+  cursor: pointer;
+}
 img {
     width: 18px;
 }

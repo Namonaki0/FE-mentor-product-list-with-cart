@@ -1,6 +1,6 @@
 <script setup>
 import { useCartStore } from '@/store/cart.js'
-import Button from './reusable/button.vue'
+import Button from './reusable/Button.vue'
 import Icon from './reusable/Icon.vue'
 
 const props = defineProps({ choice: Object })
@@ -17,13 +17,21 @@ const removeItem = (name) => {
       <ul class="divide-y divide-gray-200 mb-4">
         <li v-for="item in cart.items" :key="item.name" class="py-3 flex justify-between items-start text-sm">
           <div class="flex-1">
-            <p class="text-red-700 font-semibold">{{ item.quantity }}x @ ${{ item.price.toFixed(2) }}</p>
             <p class="text-gray-800">{{ item.name }}</p>
+            <div class="quantity-price-wrapper">
+              <p class="text-red-700 font-semibold text-xs">
+                {{ item.quantity }}x @ ${{ item.price.toFixed(2) }}
+              </p>
+              <p class="text-gray-800 font-semibold text-sm">
+                ${{ (item.quantity * item.price).toFixed(2) }}
+              </p>
+              <Button
+                class="remove-item-button"
+                icon="icon-remove-item"
+                @click="removeItem(item.name)"
+              />
+            </div>
           </div>
-          <Button 
-            icon="icon-remove-item"
-            @click="removeItem(item.name)"
-          />
         </li>
       </ul>
       <div v-if="cart.totalPrice" class="flex justify-between font-semibold text-base mb-3">
@@ -75,6 +83,9 @@ h2 {
   width: 100%;
   border: none;
 }
+.quantity-price-wrapper {
+  display: flex;
+}
 .confirm-order:hover {
   background-color: var(--rose-700);
 }
@@ -83,6 +94,10 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.remove-item-button {
+  all: unset;
+  margin-left: auto;
 }
 .empty-cart {
   width: 100px;
@@ -93,5 +108,9 @@ h2 {
   font-size: 12px;
   font-weight: 700;
   margin-top: 15px;
+} 
+ul {
+  list-style: none;
+  padding: 0;
 }
 </style>
