@@ -1,10 +1,16 @@
 <script setup>
 import { ref } from 'vue'
-import choices from '@/data/data.json'
 import ChoiceCard from '@/components/ChoiceCard.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import MobileCartBar from '@/components/MobileCartBar.vue'
 import OrderConfirmationPanel from '../components/OrderConfirmationPanel.vue'
+
+// Firestore database
+import { useCollection } from 'vuefire'
+import { collection } from 'firebase/firestore'
+import { db } from '@/firebase'
+
+const choices = useCollection(collection(db, 'desserts'))
 
 const showConfirmation = ref(false)
 
