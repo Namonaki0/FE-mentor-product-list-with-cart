@@ -47,7 +47,7 @@ const getQuantity = () => {
           media="(min-width: 480px)"
         />
         <img
-          :src="getImage(choice.image.desktop)"
+          :src="getImage(choice.image.mobile)"
           :alt="choice.name"
           class="rounded-xl mb-2 w-full object-cover"
         />
@@ -82,7 +82,7 @@ const getQuantity = () => {
   margin-bottom: 22px;
 }
 .image-wrapper {
-  border-radius: 6px;
+  border-radius: 10px;
   position: relative;
   border: 2px solid var(--rose-50);
   display: flex;
@@ -94,7 +94,7 @@ const getQuantity = () => {
 }
 img {
   width: 100%;
-  border-radius: 5px;
+  border-radius: 8px;
   display: block;
 }
 .add-to-cart {
@@ -148,7 +148,6 @@ img {
   min-width: 1.5rem;
   text-align: center;
 }
-
 .qty-btn {
   border: none;
   background: none;
