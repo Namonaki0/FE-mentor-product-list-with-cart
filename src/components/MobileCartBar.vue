@@ -15,14 +15,14 @@ const removeItem = (name) => {
     <div class="p-4 mt-6 rounded-xl md:hidden card-wrapper">
       <h2 class="text-xl font-bold mb-4">Your Cart ({{ cart.totalQuantity }})</h2>
       <ul class="divide-y divide-gray-200 mb-4">
-        <li v-for="item in cart.items" :key="item.name" class="py-3 flex justify-between items-start text-sm">
+        <li v-for="item in cart.items" :key="item.name" class="py-3 flex justify-between items-start text-sm item-breakdown-wrapper">
           <div class="flex-1">
-            <p class="text-gray-800">{{ item.name }}</p>
+            <p class="text-gray-800 item-name">{{ item.name }}</p>
             <div class="quantity-price-wrapper">
-              <p class="text-red-700 font-semibold text-xs">
-                {{ item.quantity }}x @ ${{ item.price.toFixed(2) }}
+              <p class="text-red-700 font-semibold text-xs item-quantity-wrapper">
+                <span class="item-quantity">{{ item.quantity }}x</span> @ ${{ item.price.toFixed(2) }}
               </p>
-              <p class="text-gray-800 font-semibold text-sm">
+              <p class="text-gray-800 font-semibold text-sm item-quantity-price">
                 ${{ (item.quantity * item.price).toFixed(2) }}
               </p>
               <Button
@@ -34,11 +34,11 @@ const removeItem = (name) => {
           </div>
         </li>
       </ul>
-      <div v-if="cart.totalPrice" class="flex justify-between font-semibold text-base mb-3">
-        <span>Order Total</span>
-        <span>${{ cart.totalPrice.toFixed(2) }}</span>
+      <div v-if="cart.totalPrice" class="flex justify-between font-semibold text-base mb-3 order-total-wrapper">
+        <span class="order-total-copy">Order Total</span>
+        <span class="order-total-amount">${{ cart.totalPrice.toFixed(2) }}</span>
       </div>
-      <div class="flex items-center gap-2 bg-[#f7f4ed] px-3 py-2 rounded-lg text-sm text-gray-700 mb-4 icon-wrapper">
+      <div class="flex items-center gap-2 bg-[#f7f4ed] px-3 py-2 rounded-lg text-sm text-gray-700 mb-4 order-icon" :class="cart.totalPrice ? 'has-items' : 'no-items'">
         <Icon
           v-if="cart.totalQuantity"
           icon="icon-carbon-neutral"
@@ -63,41 +63,67 @@ const removeItem = (name) => {
   
 <style scoped>
 .card-wrapper {
-  border-radius: 6px;
+  border-radius: 10px;
   font-family: var(--font-default);
   padding: 25px 20px;
   background: white;
 }
+.item-breakdown-wrapper {
+  border-bottom: 1px solid rgba(201, 174, 166, 0.403);
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
 h2 {
   color: var(--red);
   margin: 0;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 .confirm-order {
   font-family: var(--font-default);
-  font-size: 12px;
   background-color: var(--red);
   color: white;
-  padding: 12px 0px;
-  border-radius: 18px;
+  padding: 16px 0px;
+  font-size: 16px;
+  border-radius: 25px;
   width: 100%;
   border: none;
-}
-.quantity-price-wrapper {
-  display: flex;
 }
 .confirm-order:hover {
   background-color: var(--rose-700);
 }
-.icon-wrapper {
+.quantity-price-wrapper {
   display: flex;
-  flex-direction: column;
+  color: var(--rose-400);
+  font-size: 18px;
+}
+.order-icon {
+  display: flex;
   justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  align-items: center;    
+  padding: 20px 10px;
+  background: var(--rose-50);
+  border-radius: 5px;
+  margin-bottom: 25px;
+}
+.no-items {
+  flex-direction: column;
+}
+.has-items {
+  flex-direction: row;
 }
 .remove-item-button {
-  all: unset;
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid var(--rose-400);
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  padding: 8px;
+  background: none;
 }
 .empty-cart {
   width: 100px;
@@ -112,5 +138,33 @@ h2 {
 ul {
   list-style: none;
   padding: 0;
+}
+.item-quantity-wrapper {
+  margin-right: 10px;
+}
+.item-quantity {
+  color: var(--red);
+  font-weight: 700;
+  margin-right: 14px;
+}
+.item-quantity-price {
+  color: var(--rose-400);
+  font-weight: 700;
+}
+.item-name {
+  color: var(--rose-700);
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0;
+}
+.order-total-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0 26px;
+}
+.order-total-amount {
+  font-size: 24px;
+  font-weight: 700;
 }
 </style>
