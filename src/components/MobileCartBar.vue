@@ -55,6 +55,7 @@ const removeItem = (name) => {
       <Button 
         v-if="cart.totalQuantity"
         text="Confirm Order"
+        textSize="16"
         class="confirm-order"
         @click="$emit('confirm')"
       />

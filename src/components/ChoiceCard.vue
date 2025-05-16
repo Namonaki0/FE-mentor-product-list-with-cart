@@ -15,7 +15,6 @@ const getImage = (path) => {
   return new URL(`../assets/images/${path}`, import.meta.url).href
 }
 
-
 const increaseQuantity = () => {
   cart.addItem(props.choice)
 }

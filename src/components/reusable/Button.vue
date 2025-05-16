@@ -5,6 +5,7 @@ const props = defineProps({
   icon: { type: String, default: null },
   iconPosition: { type: String, default: 'left' },
   text: { type: String, default: null },
+  textSize: { type: Number, default: 12 },
   type: { type: String, default: 'button' },
   disabled: { type: Boolean, default: false },
   loading: { type: Boolean, default: false }
@@ -26,7 +27,7 @@ const emit = defineEmits(['click'])
         :position="iconPosition"
     />
 
-    <span v-if="text && !loading">{{ text }}</span>
+    <span v-if="text && !loading" :style="{ fontSize: textSize + 'px', letterSpacing: textSize > 12 ? '1px' : '0px'}">{{ text }}</span>
     <span v-if="loading" class="text-xs italic text-gray-400">Loading...</span>
 
     <Icon 
@@ -56,7 +57,7 @@ img {
 }
 span {
     font-family: var(--font-default);
-    font-size: 12px;
+    letter-spacing: 1px;
 }
 .no-text {
     margin: 0;
