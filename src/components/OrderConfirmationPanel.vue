@@ -1,52 +1,68 @@
 <script setup>
-  import { watch } from 'vue'
-  import { useCartStore } from '@/store/cart.js'
-  import Button from './reusable/Button.vue'
-  import Icon from './reusable/Icon.vue'
+import { useCartStore } from '@/store/cart.js'
+import { useModalTransition } from '@/composables/useModalTransition'
+import { onMounted, onBeforeUnmount } from 'vue'
+import Button from './reusable/Button.vue'
+import Icon from './reusable/Icon.vue'
 
-  const props = defineProps({ show: Boolean, choice: Object })
+const props = defineProps({ show: Boolean, choice: Object })
+const emit = defineEmits(['close'])
 
-  const emit = defineEmits(['close'])
+const close = () => {
+  emit('close')
+}
 
-  watch(
-    () => props.show,
-    (val) => {
-      document.body.style.overflow = val ? 'hidden' : ''
-    }
-  )
-  
-  const cart = useCartStore()
+const startNewOrder = () => {
+  cart.clearCart()
+  emit('close')
+}
 
-  const getImage = (path) => {
+const cart = useCartStore()
+
+const { isVisible, readyToRender } = useModalTransition(() => props.show)
+
+const getImage = (path) => {
   if (!path) return ''
-    return new URL(`../assets/images/${path}`, import.meta.url).href
+  return new URL(`../assets/images/${path}`, import.meta.url).href
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeydown)
+})
+
+function handleKeydown(event) {
+  if (event.key === 'Escape' && props.show) {
+    close()
   }
-  
-  const close = () => {
-    emit('close')
-  }
-  
-  const startNewOrder = () => {
-    cart.clearCart()
-    emit('close')
-  }
+}
 </script>
-  
+
 <template>
   <teleport to="body">
-      <div
-        v-if="show"
-        class="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center px-4 backdrop"
-        @click.self="close"
-      >
+    <div v-if="isVisible" class="fixed inset-0 z-50 flex items-center justify-center px-4">
+      <transition name="fade">
+        <div
+          v-if="readyToRender"
+          class="absolute inset-0 bg-black bg-opacity-50 backdrop"
+          @click.self="close"
+        ></div>
+      </transition>
       <transition name="slide-up">
-        <div class="bg-white rounded-xl w-full max-w-md p-6 shadow-xl text-center panel">
+        <div
+          v-if="readyToRender"
+          class="bg-white rounded-xl w-full max-w-md p-6 shadow-xl text-center panel"
+        >
           <Icon
             v-if="cart.totalQuantity"
             icon="icon-order-confirmed"
             class="w-4 h-4"
           />
-          <h2 class="text-2xl font-bold mb-1">Order<br />
+          <h2 class="text-2xl font-bold mb-1">
+            Order<br />
             <span>Confirmed</span>
           </h2>
           <p class="text-sm text-gray-600 mb-6 sub-header">We hope you enjoy your food!</p>
@@ -81,9 +97,9 @@
           />
         </div>
       </transition>
-      </div>
+    </div>
   </teleport>
-</template>  
+</template>
 
 <style scoped>
 .panel {
@@ -97,6 +113,7 @@
   font-family: var(--font-default);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  z-index: 100;
 }
 h2 {
   font-size: 43px;
@@ -162,6 +179,10 @@ ul::-webkit-scrollbar {
   width: 100%;
   border: none;
 }
+.confirm-order:hover,
+.confirm-order:focus {
+  background-color: var(--active-state);
+}
 .confirm-order span {
   font-size: 24px;
 }
@@ -192,9 +213,21 @@ ul::-webkit-scrollbar {
   opacity: 0.5;
   z-index: -1;
 }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
 .slide-up-enter-active,
 .slide-up-leave-active {
-  transition: all 1.4s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 .slide-up-enter-from,
 .slide-up-leave-to {
