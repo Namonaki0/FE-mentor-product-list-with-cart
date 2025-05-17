@@ -55,6 +55,7 @@ const removeItem = (name) => {
       <Button 
         v-if="cart.totalQuantity"
         text="Confirm Order"
+        textSize="16"
         class="confirm-order"
         @click="$emit('confirm')"
       />
@@ -88,8 +89,9 @@ h2 {
   width: 100%;
   border: none;
 }
-.confirm-order:hover {
-  background-color: var(--rose-700);
+.confirm-order:hover,
+.confirm-order:focus {
+  background-color: var(--active-state);
 }
 .quantity-price-wrapper {
   display: flex;
