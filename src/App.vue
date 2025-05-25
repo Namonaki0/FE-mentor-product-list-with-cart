@@ -13,4 +13,9 @@ h1 {
   margin-top: 0;
   padding-top: 26px;
 }
+@media (min-width: 1024px) {
+  .wrapper {
+    padding: 40px 70px 30px;
+  }
+}
 </style>

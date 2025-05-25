@@ -38,7 +38,7 @@ const removeItem = (name) => {
         <span class="order-total-copy">Order Total</span>
         <span class="order-total-amount">${{ cart.totalPrice.toFixed(2) }}</span>
       </div>
-      <div class="flex items-center gap-2 bg-[#f7f4ed] px-3 py-2 rounded-lg text-sm text-gray-700 mb-4 order-icon" :class="cart.totalPrice ? 'has-items' : 'no-items'">
+      <div class="flex items-center gap-2 bg-[#f7f4ed] px-3 py-2 rounded-lg text-sm text-gray-700 mb-4 order-icon" :class="cart.totalPrice ? 'has-items icon-carbon-neutral' : 'no-items'">
         <Icon
           v-if="cart.totalQuantity"
           icon="icon-carbon-neutral"
@@ -104,9 +104,11 @@ h2 {
   flex-direction: column;
   align-items: center;    
   padding: 20px 10px;
-  background: var(--rose-50);
   border-radius: 5px;
   margin-bottom: 25px;
+}
+.icon-carbon-neutral {
+  background: var(--rose-50);
 }
 .no-items {
   flex-direction: column;
@@ -168,5 +170,14 @@ ul {
 .order-total-amount {
   font-size: 24px;
   font-weight: 700;
+}
+@media (min-width: 1024px) {
+  .card-wrapper {
+      width: 40%;
+      height: max-content;
+  }
+  /* .order-icon {
+    background: none;
+  } */
 }
 </style>
