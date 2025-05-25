@@ -21,9 +21,8 @@ const confirmOrder = () => {
 
 <template>
   <DefaultLayout>
-    <h1 class="font-default">Desserts</h1>
-
-    <div>
+    <div class="container">
+      <h1 class="font-default">Desserts</h1>
       <ChoiceCard
         v-for="choice in choices"
         loading="lazy"
@@ -42,5 +41,16 @@ const confirmOrder = () => {
 <style scoped>
 .font-default {
   font-family: 'Red Hat Text Regular', sans-serif;
+}
+@media (min-width: 1024px) {
+  .container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px 20px;
+    margin-right: 20px;
+  }
+  h1 {
+    grid-column: span 3;
+  }
 }
 </style>
