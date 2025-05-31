@@ -1,5 +1,6 @@
 <script setup>
 import Icon from './Icon.vue'
+import "@/assets/styles/components/buttons.css"
 
 const props = defineProps({
   icon: { type: String, default: null },
@@ -19,7 +20,6 @@ const emit = defineEmits(['click'])
     :type="type"
     :disabled="disabled || loading"
     @click="$emit('click')"
-    class="inline-flex items-center justify-center gap-2 transition-all font-medium disabled:opacity-50 disabled:cursor-not-allowed"
   >
     <Icon 
         v-if="icon && text && iconPosition === 'left'"
@@ -28,7 +28,7 @@ const emit = defineEmits(['click'])
     />
 
     <span v-if="text && !loading" :style="{ fontSize: textSize + 'px', letterSpacing: textSize > 12 ? '1px' : '0px'}">{{ text }}</span>
-    <span v-if="loading" class="text-xs italic text-gray-400">Loading...</span>
+    <span v-if="loading">Loading...</span>
 
     <Icon 
         v-if="icon && text && iconPosition === 'right'"
@@ -46,20 +46,3 @@ const emit = defineEmits(['click'])
     <slot />
   </button>
 </template>
-
-<style scoped>
-button:hover,
-button:focus {
-  cursor: pointer;
-}
-img {
-    width: 18px;
-}
-span {
-    font-family: var(--font-default);
-    letter-spacing: 1px;
-}
-.no-text {
-    margin: 0;
-}
-</style>

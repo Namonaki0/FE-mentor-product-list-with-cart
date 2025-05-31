@@ -4,6 +4,7 @@ import ChoiceCard from '@/components/ChoiceCard.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import MobileCartBar from '@/components/MobileCartBar.vue'
 import OrderConfirmationPanel from '../components/OrderConfirmationPanel.vue'
+import "@/assets/styles/layout.css"
 
 // Firestore database
 import { useCollection } from 'vuefire'
@@ -36,29 +37,3 @@ const confirmOrder = () => {
     <OrderConfirmationPanel :show="showConfirmation" @close="showConfirmation = false" />
   </DefaultLayout>
 </template>
-
-
-<style scoped>
-.font-default {
-  font-family: 'Red Hat Text Regular', sans-serif;
-}
-@media (min-width: 768px) {
-  .container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px 20px;
-    margin-right: 20px;
-  }
-  h1 {
-    grid-column: span 2;
-  }
-}
-@media (min-width: 1024px) {
-  .container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  h1 {
-    grid-column: span 3;
-  }
-}
-</style>

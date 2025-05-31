@@ -27,53 +27,7 @@ const props = defineProps({
 </template>
 
 <style scoped>
-.quantity-button {
-  font-family: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--red);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 18px;
-  position: absolute;
-  bottom: -22px;
-  width: 35%;
-  height: 28px;
-}
-.qty {
-  font-size: 14px;
-  margin: 0 12px;
-  min-width: 1.5rem;
-  text-align: center;
-}
-.icon-btn {
-  background: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: 1px solid white;
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  padding: 8px;
-}
 img {
   width: 12px;
-}
-@media (min-width: 1024px) {
-  .quantity-button {
-    bottom: -16px;
-    width: 58%;
-    height: 22px;
-  }
-}
-@media (min-width: 1440px) {
-  .quantity-button {
-    height: 26px;
-    width: 45%;
-    bottom: -18px;
-  }
 }
 </style>
