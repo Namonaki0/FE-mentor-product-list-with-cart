@@ -159,7 +159,7 @@ img {
 }
 @media (min-width: 1024px) {
   img {
-    width: 1fr;
+    width: 100%;
   }
   .add-to-cart {
     bottom: -16px;

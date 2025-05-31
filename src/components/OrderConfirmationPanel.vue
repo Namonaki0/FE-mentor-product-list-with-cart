@@ -62,7 +62,7 @@ function handleKeydown(event) {
             class="w-4 h-4"
           />
           <h2 class="text-2xl font-bold mb-1">
-            Order <br class="break"/>
+            Order <br />
             <span>Confirmed</span>
           </h2>
           <p class="text-sm text-gray-600 mb-6 sub-header">We hope you enjoy your food!</p>
@@ -250,7 +250,7 @@ ul::-webkit-scrollbar {
     border-bottom-left-radius: 12px;
     border-radius: 12px 12px;
   }
-  .break {
+  br {
     display: none;
   }
   ul {
