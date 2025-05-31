@@ -23,8 +23,8 @@ span {
   border-radius: 18px;
   position: absolute;
   bottom: -22px;
-  width: 35%;
-  height: 28px;
+  width: 36%;
+  height: 30px;
 }
 .qty {
   font-size: 14px;
@@ -55,6 +55,6 @@ span {
   .quantity-button {
     height: 26px;
     width: 45%;
-    bottom: -18px;
+    bottom: -19px;
   }
 }
