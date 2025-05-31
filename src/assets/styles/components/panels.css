@@ -145,7 +145,7 @@ ul::-webkit-scrollbar {
     position: fixed;
     inset: 0;
     margin: auto;
-    width: 500px;
+    width: 450px;
     height: max-content;
     border-bottom-left-radius: 12px;
     border-radius: 12px 12px;
@@ -163,5 +163,9 @@ ul::-webkit-scrollbar {
   }
   h2 {
     font-size: 36px;
+  }
+  .slide-up-enter-from,
+  .slide-up-leave-to {
+    transform: translateY(10%);
   }
 }
