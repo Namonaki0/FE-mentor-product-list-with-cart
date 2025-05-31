@@ -88,6 +88,7 @@ h2 {
   border-radius: 25px;
   width: 100%;
   border: none;
+  transition: background-color 0.3s ease;
 }
 .confirm-order:hover,
 .confirm-order:focus {
@@ -173,11 +174,10 @@ ul {
 }
 @media (min-width: 1024px) {
   .card-wrapper {
-      width: 40%;
+      min-width: 350px;
       height: max-content;
+      position: sticky;
+      top: 15px;
   }
-  /* .order-icon {
-    background: none;
-  } */
 }
 </style>

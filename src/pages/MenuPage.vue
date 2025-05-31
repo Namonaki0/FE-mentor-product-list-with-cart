@@ -42,12 +42,20 @@ const confirmOrder = () => {
 .font-default {
   font-family: 'Red Hat Text Regular', sans-serif;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .container {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     gap: 10px 20px;
     margin-right: 20px;
+  }
+  h1 {
+    grid-column: span 2;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(3, 1fr);
   }
   h1 {
     grid-column: span 3;

@@ -62,7 +62,7 @@ function handleKeydown(event) {
             class="w-4 h-4"
           />
           <h2 class="text-2xl font-bold mb-1">
-            Order<br />
+            Order <br class="break"/>
             <span>Confirmed</span>
           </h2>
           <p class="text-sm text-gray-600 mb-6 sub-header">We hope you enjoy your food!</p>
@@ -178,6 +178,7 @@ ul::-webkit-scrollbar {
   border-radius: 25px;
   width: 100%;
   border: none;
+  transition: background-color 0.3s ease;
 }
 .confirm-order:hover,
 .confirm-order:focus {
@@ -238,5 +239,22 @@ ul::-webkit-scrollbar {
 .slide-up-leave-from {
   transform: translateY(0);
   opacity: 1;
+}
+@media (min-width: 1024px) {
+  .panel {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: 500px;
+    height: 500px;
+    border-bottom-left-radius: 12px;
+    border-radius: 12px 12px;
+  }
+  .break {
+    display: none;
+  }
+  ul {
+    max-height: 120px
+  }
 }
 </style>
