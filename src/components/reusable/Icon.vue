@@ -1,4 +1,6 @@
 <script setup>
+import "@/assets/styles/components/icons.css"
+
 const props = defineProps({
   icon: { type: String, default: null },
   position: { type: String, default: 'left' },
@@ -17,22 +19,9 @@ const getIconPath = (icon) => {
         :src="getIconPath(icon)"
         :alt="icon"
         :class="[
-          'w-4 h-4',
           !noMargin && position === 'left' ? 'icon-left' : '',
           !noMargin && position === 'right' ? 'icon-right' : ''
         ]"
       />
     </template>
 </template>
-
-<style scoped>
-img {
-    width: 18px;
-}
-.icon-left {
-    margin-right: 8px;
-}
-.icon-right {
-    margin-left: 8px;
-}
-</style>
