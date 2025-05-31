@@ -254,7 +254,7 @@ ul::-webkit-scrollbar {
     display: none;
   }
   ul {
-    max-height: 120px
+    max-height: 120px;
   }
 }
 </style>

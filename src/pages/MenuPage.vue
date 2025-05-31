@@ -45,7 +45,7 @@ const confirmOrder = () => {
 @media (min-width: 768px) {
   .container {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px 20px;
     margin-right: 20px;
   }
