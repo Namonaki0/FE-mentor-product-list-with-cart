@@ -2,7 +2,7 @@
 import { useCartStore } from '@/store/cart.js'
 import Button from './reusable/Button.vue'
 import Icon from './reusable/Icon.vue'
-import "../assets/styles/components/cart.css"
+import "@/assets/styles/components/cart.css"
 
 const props = defineProps({ choice: Object })
 const cart = useCartStore()
@@ -35,7 +35,7 @@ const removeItem = (name) => {
           </div>
         </li>
       </ul>
-      <div v-if="cart.totalPrice" class="order-total-wrapper">
+      <div v-if="cart.totalPrice" class="cart-total-wrapper">
         <span class="order-total-copy">Order Total</span>
         <span class="order-total-amount">${{ cart.totalPrice.toFixed(2) }}</span>
       </div>
