@@ -6,7 +6,7 @@ const props = defineProps({
   icon: { type: String, default: null },
   iconPosition: { type: String, default: 'left' },
   text: { type: String, default: null },
-  textSize: { type: Number, default: 12 },
+  textSize: { type: Number, default: 13 },
   type: { type: String, default: 'button' },
   disabled: { type: Boolean, default: false },
   loading: { type: Boolean, default: false }

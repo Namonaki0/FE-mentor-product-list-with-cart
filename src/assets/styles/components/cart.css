@@ -101,10 +101,10 @@
 .item-name {
   color: var(--rose-700);
   font-weight: 700;
-  font-size: 15px;
+  font-size: 14px;
   margin: 0;
 }
-.order-total-wrapper {
+.cart-total-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -121,7 +121,13 @@
     position: sticky;
     top: 15px;
   }
+  .card-title {
+    font-size: 28px;
+  }
   .cart-items-list {
     max-height: max-content;
+  }
+  .cart-total-wrapper {
+    padding-top: 0
   }
 }

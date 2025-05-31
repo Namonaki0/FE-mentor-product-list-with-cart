@@ -1,6 +1,6 @@
 .choice-wrapper {
   font-family: var(--font-default);
-  margin-bottom: 22px;
+  margin-bottom: 26px;
 }
 .image-wrapper {
   border-radius: 10px;
@@ -32,7 +32,7 @@
   border-radius: 18px;
   bottom: -22px;
   width: 42%;
-  height: 40px;
+  height: 42px;
 }
 .category,
 .name,
@@ -40,15 +40,15 @@
   margin: 0;
 }
 .product-info-wrapper {
-  margin-top: 24px;
+  margin-top: 36px;
 }
 .category {
   color: var(--rose-400);
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 .name {
   color: var(--rose-900);
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 .price {
   color: var(--red);
