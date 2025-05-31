@@ -13,7 +13,7 @@ h1 {
   margin-top: 0;
   padding-top: 26px;
 }
-@media (min-width: 1024px) {
+@media (min-width: 1440px) {
   .wrapper {
     padding: 40px 70px 30px;
   }

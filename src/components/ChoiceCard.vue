@@ -87,6 +87,7 @@ const getQuantity = () => {
   display: flex;
   align-items: center;
   flex-direction: column;
+  transition: border 0.3s ease;
 }
 .image-wrapper:hover {
   border: 2px solid var(--red);
@@ -155,5 +156,22 @@ img {
   cursor: pointer;
   border: 1px solid white;
   border-radius: 50%;
+}
+@media (min-width: 1024px) {
+  img {
+    width: 100%;
+  }
+  .add-to-cart {
+    bottom: -16px;
+    width: 70%;
+    height: 32px;
+  }
+}
+@media (min-width: 1440px) {
+  .add-to-cart {
+    bottom: -20px;
+    width: 54%;
+    height: 39px;
+  }
 }
 </style>
