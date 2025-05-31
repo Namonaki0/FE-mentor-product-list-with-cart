@@ -35,7 +35,7 @@ ul {
   list-style: none;
   padding: 10px 0 0;
   overflow-y: scroll;
-  max-height: 306px;
+  max-height: 270px;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -146,7 +146,7 @@ ul::-webkit-scrollbar {
     inset: 0;
     margin: auto;
     width: 500px;
-    height: 620px;
+    height: max-content;
     border-bottom-left-radius: 12px;
     border-radius: 12px 12px;
     padding: 35px;
@@ -155,6 +155,7 @@ ul::-webkit-scrollbar {
     display: none;
   }
   .list-breakdown-wrapper {
+    min-height: 100px;
     max-height: 270px;
   }
   .order-confirmed-icon {
