@@ -6,9 +6,7 @@
 
 [Product List With Cart](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c3f1db97-8317-4009-9ff4-c77e943e96d8/deploy-status)](https://app.netlify.com/sites/.../deploys)
-
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9e3f91a0-7dce-4716-8f90-0c7cf6a778ae/deploy-status)](https://app.netlify.com/projects/fe-mentor-product-list-with-cart-vue/deploys)
 
 <h4>Built with:</h4>
 
@@ -24,7 +22,6 @@
 <p style="font-weight:bold">Vue 3 Composition API</p>
 <p style="font-weight:bold">Firestore for database</p>
 <p style="font-weight:bold">Pinia for state management</p>
-<p style="font-weight:bold">Vue Router for page transitions</p>
 <p style="font-weight:bold">Mobile-first workflow</p>
 <p style="font-weight:bold">Component-driven architecture</p>
 <p style="font-weight:bold">Netlify used for deployment</p>
